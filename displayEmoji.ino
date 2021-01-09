@@ -42,17 +42,6 @@ void drawFaces(){
   lc.setRow(0,6,nf[6]);
   lc.setRow(0,7,nf[7]);
   delay(delaytime);
-  
-  // показываем веселую рожицу:
-  lc.setRow(0,0,hf[0]);
-  lc.setRow(0,1,hf[1]);
-  lc.setRow(0,2,hf[2]);
-  lc.setRow(0,3,hf[3]);
-  lc.setRow(0,4,hf[4]);
-  lc.setRow(0,5,hf[5]);
-  lc.setRow(0,6,hf[6]);
-  lc.setRow(0,7,hf[7]);
-  delay(delaytime);
 }
 
 void loop(){

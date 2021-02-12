@@ -20,6 +20,7 @@ const PROGMEM unsigned char CH[] = {
   1, 8, B00000011, B00000000, B00000000, B00000000, B00000000, // '
   3, 8, B00011100, B00100010, B01000001, B00000000, B00000000, // (
   3, 8, B01000001, B00100010, B00011100, B00000000, B00000000, // )
+  5, 8, B00101000, B00011000, B00001110, B00011000, B00101000, // *
 };
 
 
@@ -63,6 +64,12 @@ void loop(){
   // comment this block when using the 2nd messages block 
  
   printStringWithShift(string1, 100);
+  printStringWithShift(string2, 100);
+  printStringWithShift(string3, 100);
+  printStringWithShift(string4, 100);
+  printStringWithShift(string5, 100);
+  printStringWithShift(string6, 100);
+  printStringWithShift(heipaadeg, 100);
 }
 
 

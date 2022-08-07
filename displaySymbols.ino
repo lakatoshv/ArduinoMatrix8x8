@@ -33,6 +33,7 @@ const PROGMEM unsigned char CH[] = {
   4, 8, B00011000, B00010100, B00010010, B01111111, B00000000, // 4
   4, 8, B00100111, B01000101, B01000101, B00111001, B00000000, // 5
   4, 8, B00111110, B01001001, B01001001, B00110000, B00000000, // 6
+  4, 8, B01100001, B00010001, B00001001, B00000111, B00000000, // 7
 };
 
 
@@ -52,6 +53,7 @@ byte buffer[10];
 
 // active sentenses
 char string1[] = " ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+
 
 void setup(){
   matrix.init(); // module initialize

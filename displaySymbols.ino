@@ -124,6 +124,7 @@ byte buffer[10];
 
 // active sentenses
 char string1[] = " ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+char string2[] = " A B C D E F G H I J K L M N O P Q R S T U V X W Y Z ";
 
 
 void setup(){

@@ -17,6 +17,8 @@
 #define HIT_LEFT 2
 #define HIT_RIGHT 3
  
+//#define DEBUG 1
+ 
 Timer timer;
  
 LedControl lc = LedControl(12,11,10,1);
@@ -27,11 +29,36 @@ int yball;
 int yball_prev;
 byte xpad;
 int ball_timer;
-
+ 
+void newGame() {
+    lc.clearDisplay(0);
+    // начальная позиция:
+    xball = random(1, 7);
+    yball = 1;
+    delay(1500);
+    lc.clearDisplay(0);
+}
+ 
 void setup() {
+  // в начале MAX72xx находится в режиме сбережения энергии;
+  // нужно его «разбудить»: 
+  pinMode(POTPIN, INPUT);
+ 
+  lc.shutdown(0,false);
+  // выставляем яркость на среднюю величину:
+  lc.setIntensity(0, 8);
+  // очищаем дисплей:
+  lc.clearDisplay(0);
+  randomSeed(analogRead(0));
+#ifdef DEBUG
+  Serial.begin(9600);
+  Serial.println("Pong");
+#endif
+  newGame();
   ball_timer = timer.every(BALL_DELAY, moveBall);
 }
  
 void loop() {
     timer.update();
+    delay(GAME_DELAY);
 }

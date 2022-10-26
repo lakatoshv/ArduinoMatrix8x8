@@ -19,6 +19,17 @@
  
 //#define DEBUG 1
  
+byte sad[] = {
+B00000000,
+B01000100,
+B00010000,
+B00010000,
+B00000000,
+B00111000,
+B01000100,
+B00000000
+};
+ 
 Timer timer;
  
 LedControl lc = LedControl(12,11,10,1);
@@ -35,6 +46,8 @@ void newGame() {
     // начальная позиция:
     xball = random(1, 7);
     yball = 1;
+    direction = random(3, 6); // идем на юг
+    setSprite(smile);
     delay(1500);
     lc.clearDisplay(0);
 }

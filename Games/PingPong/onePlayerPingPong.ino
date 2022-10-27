@@ -58,6 +58,12 @@ void newGame() {
     xball = random(1, 7);
     yball = 1;
     direction = random(3, 6); // идем на юг
+    for(int r = 0; r < 8; r++){
+        for(int c = 0; c < 8; c++){
+            lc.setLed(0, r, c, HIGH);
+            delay(NEW_GAME_ANIMATION_SPEED);
+        }
+    }
     setSprite(smile);
     delay(1500);
     lc.clearDisplay(0);

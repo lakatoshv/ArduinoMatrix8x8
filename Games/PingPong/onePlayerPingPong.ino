@@ -52,6 +52,12 @@ int yball_prev;
 byte xpad;
 int ball_timer;
  
+void setSprite(byte *sprite){
+    for(int r = 0; r < 8; r++){
+        lc.setRow(0, r, sprite[r]);
+    }
+}
+ 
 void newGame() {
     lc.clearDisplay(0);
     // начальная позиция:
@@ -64,6 +70,7 @@ void newGame() {
             delay(NEW_GAME_ANIMATION_SPEED);
         }
     }
+    setSprite(smile);
     delay(1500);
     lc.clearDisplay(0);
 }

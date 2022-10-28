@@ -64,11 +64,13 @@ void newGame() {
             delay(NEW_GAME_ANIMATION_SPEED);
         }
     }
-    setSprite(smile);
     delay(1500);
     lc.clearDisplay(0);
 }
  
+void setPad() {
+    xpad = map(analogRead(POTPIN), 0, 1020, 8 - PADSIZE, 0);
+}
 void setup() {
   // в начале MAX72xx находится в режиме сбережения энергии;
   // нужно его «разбудить»: 
@@ -90,5 +92,10 @@ void setup() {
  
 void loop() {
     timer.update();
+    // двигаем платформу:
+    setPad();
+#ifdef DEBUG
+    Serial.println(xpad);
+#endif
     delay(GAME_DELAY);
 }

@@ -78,6 +78,19 @@ void newGame() {
 void setPad() {
     xpad = map(analogRead(POTPIN), 0, 1020, 8 - PADSIZE, 0);
 }
+ 
+void drawGame() {
+    if(yball_prev != yball){
+        lc.setRow(0, yball_prev, 0);
+    }
+    lc.setRow(0, yball, byte(1 << (xball)));
+    byte padmap = byte(0xFF >> (8 - PADSIZE) << xpad) ;
+#ifdef DEBUG
+    //Serial.println(padmap, BIN);
+#endif
+    lc.setRow(0, 7, padmap);
+}
+ 
 void setup() {
   // в начале MAX72xx находится в режиме сбережения энергии;
   // нужно его «разбудить»: 
@@ -104,5 +117,7 @@ void loop() {
 #ifdef DEBUG
     Serial.println(xpad);
 #endif
+    // обновляем данные на экране:
+    drawGame();
     delay(GAME_DELAY);
 }

@@ -79,6 +79,10 @@ void setPad() {
     xpad = map(analogRead(POTPIN), 0, 1020, 8 - PADSIZE, 0);
 }
  
+bool checkLoose() {
+    return yball == 6 && getHit() == HIT_NONE;
+}
+ 
 void drawGame() {
     if(yball_prev != yball){
         lc.setRow(0, yball_prev, 0);
@@ -119,5 +123,7 @@ void loop() {
 #endif
     // обновляем данные на экране:
     drawGame();
+    if(checkLoose()) {
+    }
     delay(GAME_DELAY);
 }

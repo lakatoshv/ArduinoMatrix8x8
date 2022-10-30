@@ -97,6 +97,12 @@ bool checkLoose() {
     return yball == 6 && getHit() == HIT_NONE;
 }
  
+void gameOver() {
+    setSprite(sad);
+    delay(1500);
+    lc.clearDisplay(0);
+}
+ 
 void drawGame() {
     if(yball_prev != yball){
         lc.setRow(0, yball_prev, 0);
@@ -139,6 +145,7 @@ void loop() {
     drawGame();
     if(checkLoose()) {
         debug("LOOSE");
+        gameOver();
     }
     delay(GAME_DELAY);
 }

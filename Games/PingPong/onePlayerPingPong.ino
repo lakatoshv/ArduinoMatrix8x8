@@ -79,6 +79,20 @@ void setPad() {
     xpad = map(analogRead(POTPIN), 0, 1020, 8 - PADSIZE, 0);
 }
  
+void debug(const char* desc){
+#ifdef DEBUG
+    Serial.print(desc);
+    Serial.print(" XY: ");  //  "Координаты X и Y: " 
+    Serial.print(xball);
+    Serial.print(", ");
+    Serial.print(yball);
+    Serial.print(" XPAD: ");  //  "Расположение платформы: "
+    Serial.print(xpad);
+    Serial.print(" DIR: ");  //  " Направление: "
+    Serial.println(direction);
+#endif
+}
+ 
 bool checkLoose() {
     return yball == 6 && getHit() == HIT_NONE;
 }
@@ -124,6 +138,7 @@ void loop() {
     // обновляем данные на экране:
     drawGame();
     if(checkLoose()) {
+        debug("LOOSE");
     }
     delay(GAME_DELAY);
 }

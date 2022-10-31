@@ -131,7 +131,6 @@ void setup() {
   Serial.println("Pong");
 #endif
   newGame();
-  ball_timer = timer.every(BALL_DELAY, moveBall);
 }
  
 void loop() {
@@ -146,6 +145,7 @@ void loop() {
     if(checkLoose()) {
         debug("LOOSE");
         gameOver();
+        newGame();
     }
     delay(GAME_DELAY);
 }

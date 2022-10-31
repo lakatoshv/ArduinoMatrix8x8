@@ -97,6 +97,63 @@ bool checkLoose() {
     return yball == 6 && getHit() == HIT_NONE;
 }
  
+void moveBall() {
+    debug("MOVE");
+    
+ 
+    // проверяем ортогональные направления и границы:
+    if((direction == 0 && xball == 0) || (direction == 4 && xball == 7)){
+        direction++;
+    }
+    if(direction == 0 && xball == 7){
+        direction = 7;
+    }
+    if(direction == 4 && xball == 0){
+        direction = 3;
+    }
+    if(direction == 2 && yball == 0){
+        direction = 3;
+    }
+    if(direction == 2 && yball == 6){
+        direction = 1;
+    }
+    if(direction == 6 && yball == 0){
+        direction = 5;
+    }
+    if(direction == 6 && yball == 6){
+        direction = 7;
+    }
+    
+    // при попадании в угол:
+    if(xball == 0 && yball == 0){
+        direction = 3;
+    }
+    if(xball == 0 && yball == 6){
+        direction = 1;
+    }
+    if(xball == 7 && yball == 6){
+        direction = 7;
+    }
+    if(xball == 7 && yball == 0){
+        direction = 5;
+    }
+ 
+    yball_prev = yball;
+    if(2 < direction && direction < 6) {
+        yball++;
+    } else if(direction != 6 && direction != 2) {
+        yball--;
+    }
+    if(0 < direction && direction < 4) {
+        xball++;
+    } else if(direction != 0 && direction != 4) {
+        xball--;
+    }
+    xball = max(0, min(7, xball));
+    yball = max(0, min(6, yball));
+    debug("AFTER MOVE");
+}
+ 
 void gameOver() {
     setSprite(sad);
     delay(1500);
@@ -131,6 +188,7 @@ void setup() {
   Serial.println("Pong");
 #endif
   newGame();
+  ball_timer = timer.every(BALL_DELAY, moveBall);
 }
  
 void loop() {

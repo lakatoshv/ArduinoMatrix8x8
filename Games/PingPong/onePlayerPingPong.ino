@@ -93,13 +93,26 @@ void debug(const char* desc){
 #endif
 }
  
+int checkBounce() {
+    if(!xball || !yball || xball == 7 || yball == 6){
+        int bounce = (yball == 0 || yball == 6) ? BOUNCE_HORIZONTAL : BOUNCE_VERTICAL;
+#ifdef DEBUG
+        debug(bounce == BOUNCE_HORIZONTAL ? "HORIZONTAL" : "VERTICAL");
+#endif
+        return bounce;
+    }
+    return 0;
+}
+ 
 bool checkLoose() {
     return yball == 6 && getHit() == HIT_NONE;
 }
  
 void moveBall() {
     debug("MOVE");
-    
+    int bounce = checkBounce();
+    if(bounce) {
+    }
  
     // проверяем ортогональные направления и границы:
     if((direction == 0 && xball == 0) || (direction == 4 && xball == 7)){

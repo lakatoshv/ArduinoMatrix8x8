@@ -112,6 +112,33 @@ void moveBall() {
     debug("MOVE");
     int bounce = checkBounce();
     if(bounce) {
+        switch(direction){
+            case 0:
+                direction = 4;
+            break;
+            case 1:
+                direction = (bounce == BOUNCE_VERTICAL) ? 7 : 3;
+            break;
+            case 2:
+                direction = 6;
+            break;
+            case 6:
+                direction = 2;
+            break;
+            case 7:
+                direction = (bounce == BOUNCE_VERTICAL) ? 1 : 5;
+            break;
+            case 5:
+                direction = (bounce == BOUNCE_VERTICAL) ? 3 : 7;
+            break;
+            case 3:
+                direction = (bounce == BOUNCE_VERTICAL) ? 5 : 1;
+            break;
+            case 4:
+                direction = 0;
+            break;
+        }
+        debug("->");
     }
  
     // проверяем ортогональные направления и границы:

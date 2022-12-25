@@ -104,6 +104,16 @@ int checkBounce() {
     return 0;
 }
  
+int getHit() {
+    if(yball != 6 || xball < xpad || xball > xpad + PADSIZE){
+        return HIT_NONE;
+    }
+    if(xball == xpad + PADSIZE / 2){
+        return HIT_CENTER;
+    }
+    return xball < xpad + PADSIZE / 2 ? HIT_LEFT : HIT_RIGHT;
+}
+ 
 bool checkLoose() {
     return yball == 6 && getHit() == HIT_NONE;
 }

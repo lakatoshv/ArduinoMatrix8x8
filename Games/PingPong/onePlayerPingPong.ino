@@ -151,6 +151,24 @@ void moveBall() {
         debug("->");
     }
  
+    // проверяем удар: модифицируем направление (влево или вправо):
+    switch(getHit()){
+        case HIT_LEFT:
+            if(direction == 0){
+                direction =  7;
+            } else if (direction == 1){
+                direction = 0;
+            }
+        break;
+        case HIT_RIGHT:
+            if(direction == 0){
+                direction = 1;
+            } else if(direction == 7){
+                direction = 0;
+            }
+        break;
+    }
+ 
     // проверяем ортогональные направления и границы:
     if((direction == 0 && xball == 0) || (direction == 4 && xball == 7)){
         direction++;

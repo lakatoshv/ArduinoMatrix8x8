@@ -17,6 +17,19 @@
 #define HIT_LEFT 2
 #define HIT_RIGHT 3
  
+//#define DEBUG 1
+ 
+byte sad[] = {
+B00000000,
+B01000100,
+B00010000,
+B00010000,
+B00000000,
+B00111000,
+B01000100,
+B00000000
+};
+ 
 Timer timer;
  
 LedControl lc = LedControl(12,11,10,1);
